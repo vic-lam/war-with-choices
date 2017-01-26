@@ -1,6 +1,5 @@
 class Board {
     constructor() {
-
     }
 
     displaySplash() {
@@ -30,9 +29,11 @@ class Board {
 
     start() {
         // Render structural divs
-        $('#board').append(`<div id="player-1" class="card col s12 m4">Player 1</div>
-          <div class="card col s12 m4" id="battleground">Battlefield</div>
-          <div class="card col s12 m4" id="player-2">Player 2</div>`)
+        var player1Hand = `<div id="player-1" class="card col s12 m4"><div class="card-title">Player 1</div></div>`
+        var player2Hand = `<div id="player-2" class="card col s12 m4" ><div class="card-title">Player 2</div></div>`
+        var battlefield = `<div class="card col s12 m4" id="battlefield"><div class="card-title">Battlefield</div><div id="message"></div></div>`
+        var gameBoard = player1Hand + battlefield + player2Hand
+        $('#board').append(gameBoard)
         // Instantiate players
         // Instantiate hands
         var player1 = new Player(1)
@@ -41,7 +42,29 @@ class Board {
         player1.render()
         player2.render()
         // Set turn to 0
+        this.playCount = 0
+        // Message that it's player1's turn
+        this.displayTurnStatus()
+
         // Add Event Listeners
+        $("#player-1 .card").click(this.turn)
+    }
+
+    turn(){
+        // Move this card to the Battlefield
+        $("#battlefield").append(event.target)
+        // increment playCount
+        this.playCount += 1
+        //
+        $("#player-1 .card").off()
+    }
+
+    displayTurnStatus(){
+      if (this.playCount % 2 == 0) {
+        $("#message").text("Player1's Turn - GO!")
+      } else {
+        $("#message").text("Player2's Turn - Choose wisely")
+      }
     }
 
 }

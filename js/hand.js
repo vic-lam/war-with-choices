@@ -6,8 +6,8 @@ class Hand {
 
     displayCards(){
       var cardDivs = []
-      this.cards.forEach(function(card, id){
-        cardDivs.push(`<div class="card card-${id}">${card.name}</div>`)
+      this.cards.forEach(function(card, index){
+        cardDivs.push(`<div class="col s4 card">${card.name}</div>`)
       })
       return cardDivs.join('')
     }

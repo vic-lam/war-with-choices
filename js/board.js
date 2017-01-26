@@ -30,10 +30,16 @@ class Board {
 
     start() {
         // Render structural divs
-        $('#board').append('')
+        $('#board').append(`<div id="player-1" class="card col s12 m4">Player 1</div>
+          <div class="card col s12 m4" id="battleground">Battlefield</div>
+          <div class="card col s12 m4" id="player-2">Player 2</div>`)
         // Instantiate players
         // Instantiate hands
+        var player1 = new Player(1)
+        var player2 = new Player(2)
         // Render hands
+        player1.render()
+        player2.render()
         // Set turn to 0
         // Add Event Listeners
     }

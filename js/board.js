@@ -112,6 +112,8 @@ class Board {
       $("#message").text(`WAAAAAAAAAARRRRRRR.....`)
       this.player1.wins += 1
       this.player2.wins += 1
+      $('#player1-wins').text(this.player1.wins)
+      $('#player2-wins').text(this.player2.wins)
     }
 
     endGame(player){

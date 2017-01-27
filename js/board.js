@@ -41,10 +41,13 @@ class Board {
         this.playCount = 0
         this.currentPlayer = this.player1
         // Message that it's player1's turn
+        debugger;
+
         this.startTurn()
     }
 
     startTurn(){
+      this.checkWinner()
       this.displayMessage()
       // Add listener to currentPlayer
       $(`#player-${this.currentPlayer.id} .card`).click(this.turn.bind(this))
@@ -65,10 +68,21 @@ class Board {
       if(this.playCount % 2 == 0){
         this.battle()
       }
+
+
       if(this.winner){
-        return this.endGame()
+        this.endGame(this.winner)
       } else {
         this.startTurn()
+      }
+    }
+
+    checkWinner(){
+
+      if(this.player1.wins == 3){
+        this.winner = this.player1
+      } else if(this.player2.wins == 3) {
+        this.winner = this.player2
       }
     }
 
@@ -117,7 +131,8 @@ class Board {
     }
 
     endGame(player){
-      $('#message').append(`Player ${player.id} Wins. Player ${player.id} must ${this.wager}`)
+      var otherPlayer = player == player1 ? player1 : player2
+      $('#message').append(`Player ${player.id} Wins. Player ${otherPlayer.id} must ${this.wager}`)
       // Empty all objects
     }
 

@@ -4,16 +4,12 @@ class Board {
 
     displaySplash() {
         $('#board').append(`
-            <form class="col s12">
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field inline">
-                <input id="splash-wager-input" type="email" class="validate" placeholder="Ex: Make the winner an egg salad sandwich">
-                <label for="email" data-error="wrong" data-success="right">Loser must: </label>
-              </div>
+          <form class="col s12">
+            <div class="input-field">
+              <input id="splash-wager-input" type="email" class="validate" placeholder="Ex: Make the winner an egg salad sandwich">
+              <label for="splash-wager-input" data-error="wrong" data-success="right">Loser must: </label>
             </div>
-          </div>
-        </form>`)
+          </form>`)
         $('#board').append('<div id="splash-start-button" class="btn">Start</div>')
         this.addStartEventHandler()
     }

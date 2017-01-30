@@ -5,7 +5,16 @@ class Hand {
         this.player = null
     }
 
-    displayCards(){
+    render(){
+      var cardDivs = this.buildCards()
+      if (this.player.id == 1) {
+        $("#player-1").append(cardDivs)
+      } else {
+        $("#player-2").append(cardDivs)
+      }
+    }
+
+    buildCards(){
       var cardDivs = []
       this.cards.forEach((card, index) => {
         cardDivs.push(`<div id="${this.player.id}-${index}" class="col s4 card">${card.name}</div>`)
@@ -13,7 +22,11 @@ class Hand {
       return cardDivs.join('')
     }
 
-    playCard(card){
+    showCards(){
+      $(`#player-${this.player.id} .card`).removeClass('blue-grey lighten-4 blue-grey-text text-lighten-4')
+    }
 
+    hideCards(){
+      $(`#player-${this.player.id} .card`).addClass('blue-grey lighten-4 blue-grey-text text-lighten-4')
     }
 }

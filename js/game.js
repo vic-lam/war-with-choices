@@ -52,8 +52,12 @@ class Game {
     }
 
     turn(){
-      $('.card').off()                        // Remove click listener
-      $('#card-area').append(event.target)    // Move this card to the Battlefield
+      $('.card').off()                       // Remove click listener
+      if (event.target.tagName == 'P'){   // If user clicks on p element, append whole card instead of just inner text
+        $('#card-area').append(event.target.parentElement)    // Move this card to the Battlefield
+      } else {
+        $('#card-area').append(event.target)
+      }
       $('#card-area .card').addClass('blue-grey lighten-4 blue-grey-text text-lighten-4')   // Hide played card
       if (this.currentPlayer.id == 2) {       // Align Player 2's card right
         $('#card-area .card:nth-child(2)').addClass('right')
@@ -133,10 +137,12 @@ class Game {
 
     war(){
       $("#message-title").text(`WAR!!!...Just kidding, it's a Tie!`)
-      this.player1.wins += 1
-      this.player2.wins += 1
-      $('#player1-wins').text(this.player1.wins)
-      $('#player2-wins').text(this.player2.wins)
+      var player1CardId = $(`#card-area [id^=1]`).attr('id').split('-')[1]
+      var player2CardId = $(`#card-area [id^=2]`).attr('id').split('-')[1]
+      var p1Card = this.player1.hand.cards[player1CardId] = new Card()
+      var p2Card = this.player2.hand.cards[player2CardId] = new Card()
+      $('#player-1').append(`<div id="${this.player1.id}-${player1CardId}" class="col s4 card"><p>${p1Card.name}</p></div>`)
+      $('#player-2').append(`<div id="${this.player2.id}-${player2CardId}" class="col s4 card"><p>${p2Card.name}</p></div>`)
     }
 
     endGame(winner){

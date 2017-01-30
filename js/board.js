@@ -53,7 +53,7 @@ class Board {
   displayWinImage() {
     $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=street+fighter+win").done(function(data){
       let url = data.data.image_url
-      $('#message-image').append(`<img src="${url}" alt="KO">`)
+      $('#message-image').append(`<img src="${url}" alt="KO" class="responsive-img">`)
     })
   }
 

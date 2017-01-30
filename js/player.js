@@ -4,5 +4,8 @@ class Player {
       this.id = id
       this.hand.player = this
       this.wins = 0
+      this.hand.cards.forEach(card => {
+        card.player = this
+      })
     }
 }

@@ -10,7 +10,6 @@
 }
 
 #message-image {
-  
   margin-top: 20px;
   img {
     margin-left: auto;
@@ -18,5 +17,33 @@
     margin-bottom: 20px;
     width: auto;
     max-height: 900px;
+  }
+}
+
+.playing-card {
+  height: 50px;
+  animation-duration: .5s;
+}
+
+#message-title {
+  animation-duration: .5s;
+}
+
+#battlefield {
+  min-height: 70px;
+  h4 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .playing-card {
+    height: 100px;
+  }
+
+  #battlefield {
+    h4 {
+      display: block;
+    }
   }
 }

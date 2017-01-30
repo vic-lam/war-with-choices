@@ -38,13 +38,9 @@ It's War...but with choices!
 - After 5 battles, the player that has more cards won wins the game
 - After the game is over, the board displays the player who won and also the player who lost must do the wager
 
-## Development Flow
 
-- Build Splash Screen
-  - append a div that contains the
-    - Title
-    - Wager input
-    - Start Button
+# Deployment
 
-- First game screen
-- 
+We used a free static site host/generator called bitballoon that's allows you to drag a directory onto the window and creates a site from it.
+
+The site is available at http://warwithchoices.bitballoon.com/

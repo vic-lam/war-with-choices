@@ -21,11 +21,12 @@ class Game {
       // Render structural divs
       this.board.displayBoard()
       // Render hands
-      this.player1.hand.render()
-      this.player2.hand.render()
-      this.otherPlayer.hand.hideCards()       // Hide Player 2's cards for first turn
 
-      this.startTurn()
+      this.player1.hand.render()
+      this.player2.hand.render().then(() =>{
+        this.otherPlayer.hand.hideCards()
+        this.startTurn()
+      })
     }
 
     setWager(){
@@ -44,6 +45,9 @@ class Game {
     }
 
     startTurn(){
+      // $('#message-image img').removeClass('rotateIn')
+      $('#message-image').html("")
+      // $('#message-image img').addClass('hinge')
       this.board.displayCurrentPlayer()       // Display who's turn it is
       this.otherPlayer.hand.hideCards()
       this.currentPlayer.hand.showCards()
@@ -74,7 +78,6 @@ class Game {
         } else {
           this.otherPlayer.hand.showCards()
           this.currentPlayer.hand.showCards()
-          $('#card-area').empty()             // Remove cards from battlefield
           this.displayProceedButton()
         }
       } else {
@@ -83,10 +86,15 @@ class Game {
     }
 
     displayProceedButton(){
+      $('#message-card').addClass('animated pulse')
       $('#message-content').text(`Please let Player ${this.currentPlayer.id} click the 'Proceed' button`)
       $('#message-card').append('<div id="message-action" class="card-action"><button id="next-turn" class="btn">Proceed</button></div>')
       $('#next-turn').click(() => {
+        $('#message-card').removeClass('animated pulse')
         $('#message-action').remove()
+        if(this.playCount % 2 == 0){
+          $('#card-area').empty()             // Remove cards from battlefield
+        }
         this.startTurn()
       })
     }
@@ -137,12 +145,13 @@ class Game {
 
     war(){
       $("#message-title").text(`WAR!!!...Just kidding, it's a Tie!`)
+      this.board.displayImage('war')
       var player1CardId = $(`#card-area [id^=1]`).attr('id').split('-')[1]
       var player2CardId = $(`#card-area [id^=2]`).attr('id').split('-')[1]
       var p1Card = this.player1.hand.cards[player1CardId] = new Card()
       var p2Card = this.player2.hand.cards[player2CardId] = new Card()
-      $('#player-1').append(`<div id="${this.player1.id}-${player1CardId}" class="col s4 card"><p>${p1Card.name}</p></div>`)
-      $('#player-2').append(`<div id="${this.player2.id}-${player2CardId}" class="col s4 card"><p>${p2Card.name}</p></div>`)
+      $('#player-1').append(`<div id="${this.player1.id}-${player1CardId}" class="col s2 m4 l3 card playing-card"><p>${p1Card.name}</p></div>`)
+      $('#player-2').append(`<div id="${this.player2.id}-${player2CardId}" class="col s2 m4 l3 card playing-card"><p>${p2Card.name}</p></div>`)
     }
 
     endGame(winner){
@@ -150,7 +159,7 @@ class Game {
       // let otherPlayer = 4
       $('#message-title').text(`Player ${winner.id} Wins!`)
       $('#message-content').text(`Player ${loser.id} must ${this.wager}`)
-      this.board.displayWinImage()
+      this.board.displayImage('street+fighter+win')
       $('#message-card').append('<div id="message-action" class="card-action"><button id="restart" class="btn">Restart</button></div>')
       $('#restart').click(() => {
         $('#board').html('')

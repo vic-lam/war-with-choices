@@ -24,7 +24,6 @@ class Board {
         <input id="splash-start-button" type="submit" class="btn" value="Start">
       </form>`
     )
-    $('#message-image').html("")
     this.addStartEventHandler()
   }
 
@@ -50,10 +49,10 @@ class Board {
     $('#message-content').html(`Please click a card from your hand`)
   }
 
-  displayWinImage() {
-    $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=street+fighter+win").done(function(data){
+  displayImage(term) {
+    $.get(`http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=${term}`).done(function(data){
       let url = data.data.image_url
-      $('#message-image').append(`<img src="${url}" alt="KO" class="responsive-img">`)
+      $('#message-image').append(`<img src="${url}" alt="${term}" class="responsive-img animated rotateIn">`)
     })
   }
 

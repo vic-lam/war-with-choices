@@ -45,9 +45,10 @@ class Game {
     }
 
     startTurn(){
-      // $('#message-image img').removeClass('rotateIn')
-      $('#message-image').html("")
-      // $('#message-image img').addClass('hinge')
+      $('#message-image img').addClass('hinge')
+      $('#message-image img').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+        $('#message-image').html("")
+      })
       this.board.displayCurrentPlayer()       // Display who's turn it is
       this.otherPlayer.hand.hideCards()
       this.currentPlayer.hand.showCards()

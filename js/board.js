@@ -22,7 +22,9 @@ class Board {
           <label for="splash-wager-input" data-error="wrong" data-success="right">Loser must: </label>
         </div>
         <input id="splash-start-button" type="submit" class="btn" value="Start">
-      </form>`)
+      </form>`
+    )
+    $('#message-image').html("")
     this.addStartEventHandler()
   }
 
@@ -37,7 +39,7 @@ class Board {
 
   displayBoard(){
     var player1Hand = `<div id="player-1" class="card col s12 m4 brown lighten-5"><div class="card-title">Player 1</div><div>Wins: <span id="player1-wins">0</span></div></div>`
-    var player2Hand = `<div id="player-2" class="card col s12 m4 brown lighten-5" ><div class="card-title">Player 2</div><div>Wins: <span id="player2-wins">0</span></div></div>`
+    var player2Hand = `<div id="player-2" class="card col s12 m4 brown lighten-5"><div class="card-title">Player 2</div><div>Wins: <span id="player2-wins">0</span></div></div>`
     var battlefield = `<div id="battlefield" class="col s12 m4"><h4 class="card-title">Battlefield</h3><div id="card-area"></div></div>`
     var gameBoard = player1Hand + battlefield + player2Hand
     $('#board').html(gameBoard)
@@ -46,6 +48,13 @@ class Board {
   displayCurrentPlayer(){
     $('#message-title').html(`Player ${this.game.currentPlayer.id}'s Turn!`)
     $('#message-content').html(`Please click a card from your hand`)
+  }
+
+  displayWinImage() {
+    $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=street+fighter+win").done(function(data){
+      let url = data.data.image_url
+      $('#message-image').append(`<img src="${url}" alt="KO">`)
+    })
   }
 
 }

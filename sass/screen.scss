@@ -3,4 +3,14 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
+// @import "compass/reset";
+
+#message-image {
+  img {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 800px;
+    width: auto;
+  }
+}

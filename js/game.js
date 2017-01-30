@@ -144,6 +144,7 @@ class Game {
       // let otherPlayer = 4
       $('#message-title').text(`Player ${winner.id} Wins!`)
       $('#message-content').text(`Player ${loser.id} must ${this.wager}`)
+      this.board.displayWinImage()
       $('#message-card').append('<div id="message-action" class="card-action"><button id="restart" class="btn">Restart</button></div>')
       $('#restart').click(() => {
         $('#board').html('')

@@ -2,16 +2,17 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 8, ../sass/screen.scss */
+@import url("https://fonts.googleapis.com/css?family=Barrio");
+/* line 9, ../sass/screen.scss */
 #board {
   margin-top: 20px;
 }
 
-/* line 12, ../sass/screen.scss */
+/* line 13, ../sass/screen.scss */
 #message-image {
   margin-top: 20px;
 }
-/* line 14, ../sass/screen.scss */
+/* line 15, ../sass/screen.scss */
 #message-image img {
   margin-left: auto;
   margin-right: auto;
@@ -20,34 +21,38 @@
   max-height: 900px;
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 24, ../sass/screen.scss */
 .playing-card {
   height: 50px;
   animation-duration: .5s;
 }
 
-/* line 28, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
 #message-title {
   animation-duration: .5s;
 }
 
-/* line 32, ../sass/screen.scss */
+/* line 33, ../sass/screen.scss */
 #battlefield {
   min-height: 70px;
 }
-/* line 34, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 #battlefield h4 {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  /* line 40, ../sass/screen.scss */
+  /* line 41, ../sass/screen.scss */
   .playing-card {
     height: 100px;
   }
 
-  /* line 45, ../sass/screen.scss */
+  /* line 46, ../sass/screen.scss */
   #battlefield h4 {
     display: block;
   }
+}
+/* line 52, ../sass/screen.scss */
+.brand-logo {
+  font-family: 'Barrio', cursive;
 }

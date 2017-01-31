@@ -4,6 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 // @import "compass/reset";
+@import url('https://fonts.googleapis.com/css?family=Barrio');
 
 #board {
   margin-top: 20px;
@@ -46,4 +47,8 @@
       display: block;
     }
   }
+}
+
+.brand-logo {
+  font-family: 'Barrio', cursive;
 }

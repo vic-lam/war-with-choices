@@ -33,6 +33,7 @@ class Board {
       this.game.setWager()
       $('form').remove()
       this.game.initializePlayers()
+      $('audio')[0].play()
     })
   }
 
